@@ -26,8 +26,10 @@ To help you understand the code, I've used the comments in these source and head
 - Added: RawVideoDelegate.h
 
 The output file will be audio.pcm and output.yuv found in the root directory
-Convert audio.pcm to a playable wav file by using `ffmpeg -f s16le -ar 32k -ac 1 -i audio.pcm audio.wav`
-Convert output.yuv to a playable mp4 file by using either
+
+Convert `audio.pcm` to a playable wav file by using `ffmpeg -f s16le -ar 32k -ac 1 -i audio.pcm audio.wav`
+
+Convert `360.yuv`, `720.yuv` and `1080.yuv` to a playable mp4 file by using either
  - `ffmpeg -f rawvideo -vcodec rawvideo -s 640x360 -r 25 -pix_fmt yuv420p -i 360.yuv -c:v libx264 360.mp4`
  - `ffmpeg -f rawvideo -vcodec rawvideo -s 1280x720 -r 25 -pix_fmt yuv420p -i 720.yuv -c:v libx264 720.mp4`
  - `ffmpeg -f rawvideo -vcodec rawvideo -s 1920x1080 -r 25 -pix_fmt yuv420p -i 1080.yuv -c:v libx264 1080.mp4`
@@ -35,3 +37,5 @@ Convert output.yuv to a playable mp4 file by using either
 ## Troubleshooting
 
 Why does my YUV video looks distorted?
+
+Why are there 3 different YUV (360,720,1080) files above?
