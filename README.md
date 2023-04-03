@@ -9,9 +9,11 @@ Here are some assumptions
 - The SDK has successfully joined the meeting, subsequently has an "in meeting" status, and "start recording status" before raw audio and raw video can be access
 - The code snipplets' starting point happens when user clicks on the "local record" button in Custom UI
 
-There are a total of 6 files which have been altered and created
+There are a total of 6 files which have been altered and created.
+I will not provided the full SDK here, you will need to download Meeting SDK for Windows Version 5.14 from marketplace.zoom.us
+Add / alter the code listed below.
 
-Altered code segments will have comments
+To help you understand the code, I've used the comments in these source and header files
 `//added for raw data access`
 
 - Altered: CustomizedUIRecordMgr.h
