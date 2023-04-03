@@ -11,6 +11,8 @@ Here are some assumptions
 
 There are a total of 6 files which have been altered and created.
 I will not provided the full SDK here, you will need to download Meeting SDK for Windows Version 5.14 from marketplace.zoom.us
+
+
 Add / alter the code listed below.
 
 To help you understand the code, I've used the comments in these source and header files
