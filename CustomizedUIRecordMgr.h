@@ -35,7 +35,7 @@ public:
 	virtual void onRecording2MP4Processing(int iPercentage);
 	virtual void onRecordingStatus(ZOOM_SDK_NAMESPACE::RecordingStatus status);
 	virtual void onCloudRecordingStatus(ZOOM_SDK_NAMESPACE::RecordingStatus status);
-	virtual void onRecordPriviligeChanged(bool bCanRec);
+	virtual void onRecordPrivilegeChanged(bool bCanRec);
 	virtual void onCustomizedLocalRecordingSourceNotification(ZOOM_SDK_NAMESPACE::ICustomizedLocalRecordingLayoutHelper* layout_helper);
 	virtual void onLocalRecordingPrivilegeRequestStatus(ZOOM_SDK_NAMESPACE::RequestLocalRecordingStatus status) {}
 	virtual void onLocalRecordingPrivilegeRequested(ZOOM_SDK_NAMESPACE::IRequestLocalRecordingPrivilegeHandler* handler) {}
@@ -46,7 +46,7 @@ private:
 private:
 	static CustomizedUIRecordMgr* s_recordMgrObj;
 	time_t m_rcdStartTime; 
-	
+
 	//added for raw data access, Audio
 	RawAudioDelegate* rawAudioDelegate;
 
