@@ -1,7 +1,7 @@
 ## Demo of Raw Audio and Raw Video access over Zoom Meeting SDK, Custom UI
 
-This is a  sample code of how you can access raw audio and raw video using Custom UI
-It is based on Meeting SDK for Windows, Version 5.14.0
+This is a sample code of how you can access raw audio and raw video using Custom UI
+It is based on Meeting SDK for Windows, Version 5.15.7
 
 Here are some assumptions
 
@@ -10,29 +10,35 @@ Here are some assumptions
 - The code snipplets' starting point happens when user clicks on the "local record" button in Custom UI
 
 There are a total of 6 files which have been altered and created.
-I will not provided the full SDK here, you will need to download Meeting SDK for Windows Version 5.14 from marketplace.zoom.us
+
+I will not provided the full SDK here, you will need to download Meeting SDK for Windows Version 5.15.7 from marketplace.zoom.us
 
 
-Add / alter the code listed below.
+Add the code listed below.
 
-To help you understand the code, I've used the comments in these source and header files
-`//added for raw data access`
-
-- Altered: CustomizedUIRecordMgr.h
-- Altered: CustomizedUIRecordMgr.cpp
 - Added: RawAudioDelegate.cpp
 - Added: RawAudioDelegate.h
 - Added: RawVideoDelegate.cpp
 - Added: RawVideoDelegate.h
 
-The output file will be audio.pcm and output.yuv found in the root directory
+Alter the code listed below
 
-Convert `audio.pcm` to a playable wav file by using `ffmpeg -f s16le -ar 32k -ac 1 -i audio.pcm audio.wav`
+- Replace: CustomizedUIRecordMgr.h
+- Replace: CustomizedUIRecordMgr.cpp
+
+To help you understand the code, I've used the comments in these source and header files
+`//added for raw data access` in `CustomizedUIRecordMgr.h` and `CustomizedUIRecordMgr.cpp`
+
+
+The output file will be audio.pcm and output.yuv found in the root directory `zoom-sdk-windows-5.15.7.20385\x64\demo\sdk_demo_v2\`
+
+Convert `audio.pcm` to a playable wav file by using `ffmpeg -f s16le -ar 32k -ac 1 -i audio.pcm audio.wav`. You will need to install ffmpeg if you have not already done so.
 
 Convert `360.yuv`, `720.yuv` and `1080.yuv` to a playable mp4 file by using either
  - `ffmpeg -f rawvideo -vcodec rawvideo -s 640x360 -r 25 -pix_fmt yuv420p -i 360.yuv -c:v libx264 360.mp4`
  - `ffmpeg -f rawvideo -vcodec rawvideo -s 1280x720 -r 25 -pix_fmt yuv420p -i 720.yuv -c:v libx264 720.mp4`
  - `ffmpeg -f rawvideo -vcodec rawvideo -s 1920x1080 -r 25 -pix_fmt yuv420p -i 1080.yuv -c:v libx264 1080.mp4`
+You will need to install ffmpeg if you have not already done so.
 
 ## Troubleshooting
 

@@ -46,6 +46,7 @@ private:
 private:
 	static CustomizedUIRecordMgr* s_recordMgrObj;
 	time_t m_rcdStartTime; 
+	ZOOM_SDK_NAMESPACE::IMeetingRecordingController* m_pRecordController;
 
 	//added for raw data access, Audio
 	RawAudioDelegate* rawAudioDelegate;
@@ -53,6 +54,4 @@ private:
 	//added for raw data access, Video
 	RawVideoDelegate* rawVideoDelegate;
 	IZoomSDKRenderer* videoRenderer;
-
-	ZOOM_SDK_NAMESPACE::IMeetingRecordingController* m_pRecordController;
 };

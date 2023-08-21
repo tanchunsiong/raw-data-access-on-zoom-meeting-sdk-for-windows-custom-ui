@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "CustomizedUIRecordMgr.h"
 
-
 //added for raw data access
 #include "rawdata/zoom_rawdata_api.h" //commonly used for both audio and video
 #include "zoom_sdk_def.h"
@@ -9,17 +8,14 @@
 //added for raw data access for audio
 #include "RawAudioDelegate.h"
 #include "rawdata/rawdata_audio_helper_interface.h"
-//end added for raw data access
+
 
 //added for raw data access for video
 #include "RawVideoDelegate.h"
 #include <rawdata/rawdata_video_source_helper_interface.h>
 
-
 //added for raw data access for video, userID is necessary for recording
 IMeetingParticipantsController* m_pParticipantsController;
-
-
 
 CustomizedUIRecordMgr* CustomizedUIRecordMgr::s_recordMgrObj=NULL;
 
@@ -70,6 +66,8 @@ void CustomizedUIRecordMgr::GetRecordController()
 		return;
 	}
 	*/
+
+
 }
 
 bool CustomizedUIRecordMgr::StartRecording(time_t& startTimestamp)
@@ -88,6 +86,8 @@ bool CustomizedUIRecordMgr::StartRecording(time_t& startTimestamp)
 		return false;
 	}
 
+	//added for raw data access
+	//need to comment this out
 	//ZOOM_SDK_NAMESPACE::SDKError rtn = m_pRecordController->StartRecording(startTimestamp); 
 	//if (rtn == ZOOM_SDK_NAMESPACE::SDKERR_SUCCESS){
 	//	return true;
@@ -100,7 +100,6 @@ bool CustomizedUIRecordMgr::StartRecording(time_t& startTimestamp)
 	if (err1 != SDKERR_SUCCESS) {
 		cout << "Error occurred";
 	}
-
 }
 
 bool CustomizedUIRecordMgr::StopRecording(time_t& stopTimestamp)
@@ -309,7 +308,7 @@ void CustomizedUIRecordMgr::onRecordingStatus(ZOOM_SDK_NAMESPACE::RecordingStatu
 			}
 
 			//added for raw data access
-//AUDIO portion
+			//AUDIO portion
 			rawAudioDelegate = new RawAudioDelegate();
 			ZOOM_SDK_NAMESPACE::IZoomSDKAudioRawDataHelper* audioHelper = GetAudioRawdataHelper();
 			SDKError err = audioHelper->subscribe(rawAudioDelegate);
@@ -333,11 +332,8 @@ void CustomizedUIRecordMgr::onRecordingStatus(ZOOM_SDK_NAMESPACE::RecordingStatu
 				videoRenderer->setRawDataResolution(ZoomSDKResolution_1080P);
 				//subscribe to the user's raw video by their userID
 				videoRenderer->subscribe(returnvalue, RAW_DATA_TYPE_VIDEO);
-
 				//this will trigger callbacks in onRawDataFrameReceived(... ...) within RawVideoDelegate.cpp
-
 			}
-
 		}
 		break;
 	case ZOOM_SDK_NAMESPACE::Recording_Stop:
