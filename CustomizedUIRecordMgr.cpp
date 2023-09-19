@@ -66,8 +66,6 @@ void CustomizedUIRecordMgr::GetRecordController()
 		return;
 	}
 	*/
-
-
 }
 
 bool CustomizedUIRecordMgr::StartRecording(time_t& startTimestamp)
@@ -86,20 +84,19 @@ bool CustomizedUIRecordMgr::StartRecording(time_t& startTimestamp)
 		return false;
 	}
 
-	//added for raw data access
-	//need to comment this out
-	//ZOOM_SDK_NAMESPACE::SDKError rtn = m_pRecordController->StartRecording(startTimestamp); 
-	//if (rtn == ZOOM_SDK_NAMESPACE::SDKERR_SUCCESS){
-	//	return true;
-	//}else {
-	//	return false;
-	//}
+//	ZOOM_SDK_NAMESPACE::SDKError rtn = m_pRecordController->StartRecording(startTimestamp); 
+//	if (rtn == ZOOM_SDK_NAMESPACE::SDKERR_SUCCESS){
+//		return true;
+//	}else {
+//		return false;
+//	}
 
-	//added for raw data access
+		//added for raw data access
 	SDKError err1 = m_pRecordController->StartRawRecording();
 	if (err1 != SDKERR_SUCCESS) {
 		cout << "Error occurred";
 	}
+
 }
 
 bool CustomizedUIRecordMgr::StopRecording(time_t& stopTimestamp)
@@ -334,6 +331,7 @@ void CustomizedUIRecordMgr::onRecordingStatus(ZOOM_SDK_NAMESPACE::RecordingStatu
 				videoRenderer->subscribe(returnvalue, RAW_DATA_TYPE_VIDEO);
 				//this will trigger callbacks in onRawDataFrameReceived(... ...) within RawVideoDelegate.cpp
 			}
+
 		}
 		break;
 	case ZOOM_SDK_NAMESPACE::Recording_Stop:
